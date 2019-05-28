@@ -14,14 +14,14 @@ float kP = 1, kD = 1, kI = 1;
 
 task main() {
 	while(1){ 
-		colorR=getColorReflected(sensoreR); //get the reflected light from the right sensor
-		colorL=getColorReflected(sensoreL); //get the reflected light from the left sensor
-		error=colorR-colorL; //calculate the error
-    Proportional = error + kP; //calculate the proportional part
-    Integral = Integral + ( kI * error ); //calculate the integral part
-    Derivative = (error - preverror ) * kD; //calculate the derivative part
-    setMotorSpeed( motorR, nVelocity + ( Proportional + Integral + Derivative ) ); //set the speed of the motor to the velocity base plus PID correction
-    setMotorSpeed( motorL, nVelocity - ( Proportional + Integral + Derivative ) ); //set the speed of the motor to the velocity base minus PID correction
-		preverror=error; 
+		colorR = getColorReflected( sensoreR ); //get the reflected light from the right sensor
+		colorL = getColorReflected( sensoreL ); //get the reflected light from the left sensor
+		error = colorR - colorL; //calculate the error
+		Proportional = error + kP; //calculate the proportional part
+		Integral = Integral + ( kI * error ); //calculate the integral part
+		Derivative = (error - preverror ) * kD; //calculate the derivative part
+		setMotorSpeed( motorR, nVelocity + ( Proportional + Integral + Derivative ) ); //set the speed of the motor to the velocity base plus PID correction
+		setMotorSpeed( motorL, nVelocity - ( Proportional + Integral + Derivative ) ); //set the speed of the motor to the velocity base minus PID correction
+		preverror = error; 
 	}
 }
